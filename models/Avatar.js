@@ -39,7 +39,7 @@ const ItemSchema = new Schema({
     type: String,
     default: "Light"
   },
-  User: {type: mongoose.Schema.ObjectId, ref: 'user'}
+  user: {type: mongoose.Schema.ObjectId, ref: 'user'}
 });
 
 module.exports = Item = mongoose.model('avatar', ItemSchema);
