@@ -25,7 +25,7 @@ app.use('/api/items', require('./routes/api/items'));
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/avatar', require('./routes/api/avatars'));
-
+app.use('/api/liveevent', require('./routes/api/liveEvents'));
 // Serve static assets if in production
 if (process.env.NODE_ENV === 'production') {
   // Set static folder

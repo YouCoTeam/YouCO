@@ -9,8 +9,8 @@ const Avatar = require('../../models/Avatar');
 // @desc    Get Curernt user Avatar
 // @access  Private
 router.get('/',auth, (req, res) => {
-    Avatar.findOne({User: req.user.id},(err,avatar) => {
-    res.json(avatar)
+    Avatar.findOne({user: req.user.id},(err,avatar) => {
+    res.json(avatar);
     })
 });
 
@@ -28,7 +28,7 @@ router.post('/', auth, (req, res) => {
     eyebrowType: req.body.eyebrowType,
     mouthType: req.body.mouthType,
     skinColor: req.body.skinColor,
-    User: req.user.id
+    user: req.user.id
   });
 
   newAvatar.save().then(item => res.json(item));
