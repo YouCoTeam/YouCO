@@ -1,6 +1,6 @@
-# MERN Shopping List
+# MERN YouCo App
 
-> Shopping list app built with the MERN stack along with Redux for state management, Reactstrap and react-transition-group.
+> Online Conference & Collaboration Interactive MERN stack App along with Redux for state management, Reactstrap and react-transition-group.
 
 ## Quick Start
 
@@ -33,8 +33,7 @@ There is a Heroku post build script so that you do not have to compile your Reac
 
 ### Author
 
-Brad Traversy
-[Traversy Media](http://www.traversymedia.com)
+YouCo
 
 ### Version
 
