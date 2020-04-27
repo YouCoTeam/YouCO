@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import {
     Button,
-    Modal,
-    ModalHeader,
-    ModalBody,
     Form,
     FormGroup,
     Label,
@@ -63,7 +60,7 @@ class CustomizeAvatar extends Component {
         return (
             <div>
                 <Avatar
-                    style={{width: '200px', height: '200px'}}
+                    style={{width: '200px', height: '200px', marginLeft: 'auto', marginRight: 'auto', display: 'block'}}
                     avatarStyle='Transparent'
                     topType={this.state.top}
                     facialHairType={this.state.facialHairType}
