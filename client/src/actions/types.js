@@ -12,3 +12,7 @@ export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAIL = "REGISTER_FAIL";
 export const GET_ERRORS = 'GET_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+
+export const GET_AVATAR = 'GET_AVATAR';
+export const UPDATE_AVATAR = 'UPDATE_AVATAR';
+export const AVATAR_LOADING = 'AVATAR_LOADING';

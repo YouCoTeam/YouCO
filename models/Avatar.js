@@ -3,17 +3,9 @@ const Schema = mongoose.Schema;
 
 // Create Schema
 const ItemSchema = new Schema({
-    topType: {
+  top: {
     type: String,
     default: "ShortHairTheCaesar"
-  },
-  accessoriesType: {
-    type: String,
-    default: "Blank"
-  },
-  hairColor: {
-    type: String,
-    default: "Blank"
   },
   facialHairType: {
     type: String,

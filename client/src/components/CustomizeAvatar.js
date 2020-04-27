@@ -9,6 +9,9 @@ import {
     Label,
     Input
   } from 'reactstrap';
+import { connect } from 'react-redux';
+import { getAvatar, updateAvatar } from '../actions/avatarActions';
+import PropTypes from 'prop-types';
 import Avatar from 'avataaars';
 
 class CustomizeAvatar extends Component {
@@ -22,12 +25,38 @@ class CustomizeAvatar extends Component {
         skinColor: 'Light'
     };
 
+    static propTypes = {
+        getAvatar: PropTypes.func.isRequired,
+        avatar: PropTypes.object.isRequired,
+        isAuthenticated: PropTypes.bool
+    };
+
+    componentDidMount() {
+        this.props.getAvatar();
+    }
+
     onChange = e => {
         this.setState({ [e.target.name]: e.target.value });
     };
 
     onSubmit = e => {
         e.preventDefault();
+
+        const { top, facialHairType, clotheType, eyeType, eyebrowType, mouthType, skinColor } = this.state;
+
+        // Create avatar object
+        const newAvatar = {
+        top,
+        facialHairType,
+        clotheType,
+        eyeType,
+        eyebrowType,
+        mouthType,
+        skinColor
+        };
+
+        // Update avatar
+        this.props.updateAvatar(newAvatar);
     };
 
     render() {
@@ -84,8 +113,6 @@ class CustomizeAvatar extends Component {
                             <option value="ShortHairTheCaesar">ShortHairTheCaesar</option>
                             <option value="ShortHairTheCaesarSidePart">ShortHairTheCaesarSidePart</option>
                         </Input>
-                    </FormGroup>
-                    <FormGroup>
                         <Label for="facialHairType">Facial Hair</Label>
                         <Input type="select" name="facialHairType" id="facialHairType" onChange={this.onChange}>
                             <option value="Blank">Blank</option>
@@ -95,8 +122,6 @@ class CustomizeAvatar extends Component {
                             <option value="MoustacheFancy">MoustacheFancy</option>
                             <option value="MoustacheMagnum">MoustacheMagnum</option>
                         </Input>
-                    </FormGroup>
-                    <FormGroup>
                         <Label for="clotheType">👔 Clothes</Label>
                         <Input type="select" name="clotheType" id="clotheType" onChange={this.onChange}>
                             <option value="BlazerShirt">BlazerShirt</option>
@@ -109,8 +134,6 @@ class CustomizeAvatar extends Component {
                             <option value="ShirtScoopNeck">ShirtScoopNeck</option>
                             <option value="ShirtVNeck">ShirtVNeck</option>
                         </Input>
-                    </FormGroup>
-                    <FormGroup>
                         <Label for="eyeType">👁 Eyes</Label>
                         <Input type="select" name="eyeType" id="eyeType" onChange={this.onChange}>
                             <option value="Close">Close</option>
@@ -126,8 +149,6 @@ class CustomizeAvatar extends Component {
                             <option value="Wink">Wink</option>
                             <option value="WinkWacky">WinkWacky</option>
                         </Input>
-                    </FormGroup>
-                    <FormGroup>
                         <Label for="eyebrowType">✏️ Eyebrow</Label>
                         <Input type="select" name="eyebrowType" id="eyebrowType" onChange={this.onChange}>
                             <option value="Angry">Angry</option>
@@ -143,8 +164,6 @@ class CustomizeAvatar extends Component {
                             <option value="UpDown">UpDown</option>
                             <option value="UpDownNatural">UpDownNatural</option>
                         </Input>
-                    </FormGroup>
-                    <FormGroup>
                         <Label for="mouthType">👄 Mouth</Label>
                         <Input type="select" name="mouthType" id="mouthType" onChange={this.onChange}>
                             <option value="Concerned">Concerned</option>
@@ -160,8 +179,6 @@ class CustomizeAvatar extends Component {
                             <option value="Twinkle">Twinkle</option>
                             <option value="Vomit">Vomit</option>
                         </Input>
-                    </FormGroup>
-                    <FormGroup>
                         <Label for="skinColor">🎨 Skin</Label>
                         <Input type="select" name="skinColor" id="skinColor" onChange={this.onChange}>
                             <option value="Tanned">Tanned</option>
@@ -172,6 +189,9 @@ class CustomizeAvatar extends Component {
                             <option value="DarkBrown">DarkBrown</option>
                             <option value="Black">Black</option>
                         </Input>
+                        <Button color='dark' style={{ marginTop: '2rem' }} block>
+                            Save Change
+                        </Button>
                     </FormGroup>
                 </Form>
             </div>
@@ -179,4 +199,12 @@ class CustomizeAvatar extends Component {
     }
 }
 
-export default CustomizeAvatar;
+const mapStateToProps = state => ({
+    avatar: state.avatar,
+    isAuthenticated: state.auth.isAuthenticated
+  });
+
+export default connect(
+    mapStateToProps,
+    { getAvatar, updateAvatar }
+)(CustomizeAvatar);

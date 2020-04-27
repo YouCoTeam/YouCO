@@ -8,6 +8,9 @@ const jwt = require('jsonwebtoken');
 // User Model
 const User = require('../../models/User');
 
+// User Avatar
+const Avatar = require('../../models/Avatar');
+
 // @route   POST api/users
 // @desc    Register new user
 // @access  Public
@@ -37,6 +40,11 @@ router.post('/', (req, res) => {
           newUser.password = hash;
           newUser.save()
             .then(user => {
+              const newAvatar = new Avatar({
+                user: user.id
+              });
+              newAvatar.save();
+
               jwt.sign(
                 { id: user.id },
                 config.get('jwtSecret'),

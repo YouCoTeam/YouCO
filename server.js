@@ -15,7 +15,8 @@ const db = config.get('mongoURI');
 mongoose
   .connect(db, { 
     useNewUrlParser: true,
-    useCreateIndex: true
+    useCreateIndex: true,
+    useUnifiedTopology: true
   }) // Adding new mongo url parser
   .then(() => console.log('MongoDB Connected...'))
   .catch(err => console.log(err));
@@ -24,7 +25,7 @@ mongoose
 app.use('/api/items', require('./routes/api/items'));
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
-app.use('/api/avatar', require('./routes/api/avatars'));
+app.use('/api/avatars', require('./routes/api/avatars'));
 app.use('/api/liveevent', require('./routes/api/liveEvents'));
 // Serve static assets if in production
 if (process.env.NODE_ENV === 'production') {
