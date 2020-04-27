@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AppNavbar from './components/AppNavbar';
 import ShoppingList from './components/ShoppingList';
 import ItemModal from './components/ItemModal';
-import UserAvatar from './components/UserAvatar';
+import CustomizeAvatar from './components/CustomizeAvatar';
 import { Container } from 'reactstrap';
 
 import { Provider } from 'react-redux';
@@ -24,7 +24,7 @@ class App extends Component {
           <AppNavbar />
           <Container>
             <ItemModal />
-            <UserAvatar/>
+            <CustomizeAvatar/>
             <ShoppingList />
           </Container>
         </div>

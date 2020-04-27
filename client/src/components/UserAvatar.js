@@ -7,9 +7,9 @@ class UserAvatar extends Component {
             <div>
                 Your avatar:
                 <Avatar
-                style={{width: '400px', height: '400px'}}
-                avatarStyle='Circle'
-                topType='LongHairMiaWallace'
+                style={{width: '200px', height: '200px'}}
+                avatarStyle='Transparent'
+                topType='LongHairStraight'
                 accessoriesType='Prescription02'
                 hairColor='BrownDark'
                 facialHairType='Blank'
