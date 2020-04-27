@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import AppNavbar from './components/AppNavbar';
 import ShoppingList from './components/ShoppingList';
 import ItemModal from './components/ItemModal';
-import CustomizeAvatar from './components/CustomizeAvatar';
-import { Container } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 
 import { Provider } from 'react-redux';
 import store from './store';
@@ -23,9 +22,10 @@ class App extends Component {
         <div className='App'>
           <AppNavbar />
           <Container>
-            <ItemModal />
-            <CustomizeAvatar/>
-            <ShoppingList />
+          <Row>
+            <Col xs="6"><ItemModal /></Col>
+            <Col xs="6"><ShoppingList /></Col>
+          </Row>
           </Container>
         </div>
       </Provider>

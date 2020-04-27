@@ -11,6 +11,7 @@ import {
 } from 'reactstrap';
 import { connect } from 'react-redux';
 import { addItem } from '../actions/itemActions';
+import CustomizeAvatar from '../components/CustomizeAvatar';
 import PropTypes from 'prop-types';
 
 class ItemModal extends Component {
@@ -51,32 +52,35 @@ class ItemModal extends Component {
     return (
       <div>
         {this.props.isAuthenticated ? (
-          <Button
-            color='dark'
-            style={{ marginBottom: '2rem' }}
-            onClick={this.toggle}
-          >
-            Add Item
-          </Button>
+          <div>
+            <Button
+              color='dark'
+              style={{ marginBottom: '2rem' }}
+              onClick={this.toggle}
+            >
+              Add Conference Event
+            </Button>
+            <CustomizeAvatar/>
+          </div>
         ) : (
           <h4 className='mb-3 ml-4'>Welcome to YouCo</h4>
         )}
 
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
-          <ModalHeader toggle={this.toggle}>Add To Shopping List</ModalHeader>
+          <ModalHeader toggle={this.toggle}>Add Conference Event</ModalHeader>
           <ModalBody>
             <Form onSubmit={this.onSubmit}>
               <FormGroup>
-                <Label for='item'>Item</Label>
+                <Label for='item'>Conference Name</Label>
                 <Input
                   type='text'
                   name='name'
                   id='item'
-                  placeholder='Add shopping item'
+                  placeholder='Add conference name'
                   onChange={this.onChange}
                 />
                 <Button color='dark' style={{ marginTop: '2rem' }} block>
-                  Add Item
+                  Add Conference Event
                 </Button>
               </FormGroup>
             </Form>
