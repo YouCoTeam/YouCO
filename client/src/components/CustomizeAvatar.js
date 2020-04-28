@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { getAvatar, updateAvatar } from '../actions/avatarActions';
 import PropTypes from 'prop-types';
 import Avatar from 'avataaars';
+import axios from 'axios';
 
 class CustomizeAvatar extends Component {
     state = {
@@ -30,6 +31,22 @@ class CustomizeAvatar extends Component {
 
     componentDidMount() {
         this.props.getAvatar();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.avatar !== prevProps.avatar) {
+            console.log("componentdidupdate");
+            console.log(this.props.avatar)
+            this.setState({
+                top: this.props.avatar.top,
+                facialHairType: this.props.avatar.facialHairType,
+                clotheType: this.props.avatar.clotheType,
+                eyeType: this.props.avatar.eyeType,
+                eyebrowType: this.props.avatar.eyebrowType,
+                mouthType: this.props.avatar.mouthType,
+                skinColor: this.props.avatar.skinColor
+            })
+        }
     }
 
     onChange = e => {
@@ -57,6 +74,7 @@ class CustomizeAvatar extends Component {
     };
 
     render() {
+        console.log(this.props);
         return (
             <div>
                 <Avatar

@@ -5,7 +5,13 @@ import {
   } from '../actions/types';
   
   const initialState = {
-    avatar: {},
+    top: 'LongHairStraight',
+    facialHairType: 'Blank',
+    clotheType: 'Hoodie',
+    eyeType: 'Happy',
+    eyebrowType: 'Default',
+    mouthType: 'Smile',
+    skinColor: 'Light',
     loading: false
   };
   
@@ -13,14 +19,24 @@ import {
     switch (action.type) {
       case GET_AVATAR:
         return {
-          ...state,
-          avatar: action.payload,
+          top: action.payload.top,
+          facialHairType: action.payload.facialHairType,
+          clotheType: action.payload.clotheType,
+          eyeType: action.payload.eyeType,
+          eyebrowType: action.payload.eyebrowType,
+          mouthType: action.payload.mouthType,
+          skinColor: action.payload.skinColor,
           loading: false
         };
       case UPDATE_AVATAR:
         return {
-          ...state,
-          avatar: action.payload,
+          top: action.payload.top,
+          facialHairType: action.payload.facialHairType,
+          clotheType: action.payload.clotheType,
+          eyeType: action.payload.eyeType,
+          eyebrowType: action.payload.eyebrowType,
+          mouthType: action.payload.mouthType,
+          skinColor: action.payload.skinColor,
           loading: false
         };
       case AVATAR_LOADING:

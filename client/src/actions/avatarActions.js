@@ -3,7 +3,7 @@ import { GET_AVATAR, UPDATE_AVATAR, AVATAR_LOADING } from './types';
 import { tokenConfig } from './authActions';
 import { returnErrors } from './errorActions';
 
-export const getAvatar = () => (dispatch, getState) => {
+export const getAvatar = (e) => (dispatch, getState) => {
   dispatch(setAvatarLoading());
   axios
     .get('/api/avatars', tokenConfig(getState))

@@ -10,7 +10,8 @@ const Avatar = require('../../models/Avatar');
 // @access  Private
 router.get('/', auth, (req, res) => {
     Avatar.findOne({user: req.user.id},(err,avatar) => {
-    res.json(avatar);
+      const {top, facialHairType, clotheType, eyeType, eyebrowType, mouthType, skinColor} = avatar;
+      res.json({top, facialHairType, clotheType, eyeType, eyebrowType, mouthType, skinColor});
     })
 });
 
@@ -18,7 +19,6 @@ router.get('/', auth, (req, res) => {
 // @desc    Create An Avatar
 // @access  Private
 router.post('/', auth, (req, res) => {
-
   Avatar.findOneAndUpdate({user: req.user.id},{
     top: req.body.top,
     facialHairType: req.body.facialHairType,
@@ -27,8 +27,9 @@ router.post('/', auth, (req, res) => {
     eyebrowType: req.body.eyebrowType,
     mouthType: req.body.mouthType,
     skinColor: req.body.skinColor,
-   },(err,avatar) => {
-    res.json(avatar);
+   }).then(avatar => {
+    const {top, facialHairType, clotheType, eyeType, eyebrowType, mouthType, skinColor} = req.body;
+    res.json({top, facialHairType, clotheType, eyeType, eyebrowType, mouthType, skinColor});
   })
 });
 
